@@ -105,4 +105,46 @@ Based on the infrastructure layout, the lab will be broken down into the followi
 <p align="center">
 <b>[Step 5] Writing Analytic Rules And Generating Scheduled Tasks</b> <br/>
 <br/>
+ Next, we can generate alerts for certain events by setting up custom analytic rules. <br/>
+ We will be writing a rule for Scheduled Tasks and Persistence Techniques. <br/>
+ <br/>
+ According to the MITRE Attack Framework, “Adversaries may abuse task scheduling functionality to facilitate initial or recurring <br/>
+ execution of malicious code. Utilities exist within all major operating systems to schedule programs or scripts to be executed at <br/>
+ a specified date and time”. <br/>
+ <br/>
+ 1. Create a scheduled task in the VM that executes a .exe program. <br/>
+ <img src="https://i.imgur.com/KaTx6kl.png" height="80%" width="80%" /><br/>
+ <img src="https://i.imgur.com/GonV5dt.png" height="80%" width="80%" /><br/>
+ <br/>
+ 2. Obtain log properties of this type of event. In this case the Event ID for scheduled tasks creation is 4698. <br/>
+ <img src="https://i.imgur.com/G8RG9wR.png" height="80%" width="80%" /><br/>
+ <br/>
+ 3. Create an analytics rule to generate an alert. Select appropriate Severity level and TTP (technique, tactics, procedures) <br/>
+ <img src="https://i.imgur.com/ozocACd.png" height="80%" width="80%" /><br/>
+<br/>
+ Basic rule query: <br/>
+ <img src="https://i.imgur.com/p0wRsi5.png" height="80%" width="80%" /><br/>
+<br/>
+ The above rule will return logs corresponding to the rule. However, we can add in additional lines to parse out important information only.<br/>
+ Example of updated query: <br/>
+ <img src="https://i.imgur.com/Da2UdEg.png" height="80%" width="80%" /><br/>
+ In this updated query, only important log information is displayed which would help if an analyst want to investigate the alert. <br/>
+<br/> 
+ 4. Next, add in entities in the rule so that it would be easier for an analyst to investigate. <br/>
+ In this example, User,  ProcessID, Computer host and name of tasks is added. <br/>
+ <img src="https://i.imgur.com/SitNqNl.png" height="80%" width="80%" /><br/>
+<br/>
+ 5. Lastly, we will test our rule by creating a scheduled task in our VM. <br/>
+ We can see that a new incident/alert is generated on our dashboard. <br/>
+ By clicking on the alert generated, we are able to access to information regarding to the log as per our rule configuration. <br/>
+ <img src="https://i.imgur.com/R4szBfz.png" height="80%" width="80%" /><br/>
+ <img src="https://i.imgur.com/JQAK9pB.png" height="80%" width="80%" /><br/>
+<br/>
+ 
 
+
+
+
+
+
+ 
