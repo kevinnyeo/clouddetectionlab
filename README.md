@@ -72,17 +72,34 @@ Based on the infrastructure layout, the lab will be broken down into the followi
   4. Create Log Analytic Workspace and connect Microsoft Sentinel<br/>
   <img src="https://i.imgur.com/It20kIw.png" height="80%" width="80%" /><br/>
   <img src="https://i.imgur.com/NvCL22K.png" height="80%" width="80%" /><br/>
+<br/>
  
 <p align="center">
 <b>[Step 2] Getting Data Into Sentinel</b> <br/>
 <br/>
-
+ 1. Connect Windows Security Event Data to Microsoft Sentinel and define scope to resource group <br/>
+ <img src="https://i.imgur.com/FGUJplQ.png" height="80%" width="80%" /><br/>
+ <img src="https://i.imgur.com/3p0mHr5.png" height="80%" width="80%" /><br/>
+ <img src="https://i.imgur.com/vWCpUxe.png" height="80%" width="80%" /><br/>
+ <img src="https://i.imgur.com/zextD8p.png" height="80%" width="80%" /><br/>
+ 
 <p align="center">
 <b>[Step 3] Generating Security Events</b> <br/>
+<br/>
+ Now that our VM is connected to Sentinel and our Log Analytics Workspace we need to transport data from our Logs. <br/>
+ To do this we need to simply need to perform some action on the Windows 10 events that will generate security alerts. <br/>
+<br/>
+ 1. Login to connected VM via RDP. Open event viewer from start menu, under security tab, we can view all security event logs on the VM. <br/>
+ An example event id in this case would be '4624' for successful logons onto our machine. <br/>
+ <img src="https://i.imgur.com/IEcLoah.png" height="80%" width="80%" /><br/>
+ <img src="https://i.imgur.com/9FP9IVu.png" height="80%" width="80%" /><br/>
 <br/>
 
 <p align="center">
 <b>[Step 4] Sentinel KQL Queries</b> <br/>
+<br/>
+ 1. Once we know properties of Windows Events logs such as the event IDs, we can query it in Sentinel using KQL.
+ <img src="https://i.imgur.com/PDCCEON.png" height="80%" width="80%" /><br/>
 <br/>
 
 <p align="center">
